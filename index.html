@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Nexus Platforms — Bots, APIs & Automações Inteligentes</title>
+    <meta name="description" content="Desenvolvemos bots para Telegram e Discord, APIs escaláveis, plataformas SaaS e automações personalizadas. Tecnologia que transforma negócios.">
+    <meta name="keywords" content="bots telegram, bots discord, desenvolvimento api, plataforma saas, automações, vendshub bot, nexus platforms">
+    <meta name="author" content="Nexus Platforms">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://nexus-plataforms.com/">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nexus-plataforms.com/">
+    <meta property="og:title" content="Nexus Platforms — Tecnologia que transforma negócios">
+    <meta property="og:description" content="Bots, APIs e Automações inteligentes para o seu negócio.">
+    <meta property="og:image" content="https://imgur.com/b8PTjZA.png">
+    <meta property="og:locale" content="pt_BR">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nexus Platforms — Tecnologia que transforma negócios">
+    <meta name="twitter:description" content="Bots, APIs e Automações inteligentes.">
+    <meta name="twitter:image" content="https://imgur.com/b8PTjZA.png">
+    
+    <!-- Favicon BoxIcon bx-cube em SVG -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23f5f5f5' d='M21.406 6.086l-9-4a1 1 0 0 0-.812 0l-9 4a1 1 0 0 0-.594.914v6a1 1 0 0 0 .594.914l9 4a1 1 0 0 0 .812 0l9-4a1 1 0 0 0 .594-.914v-6a1 1 0 0 0-.594-.914zM12 4.094L18.539 7 12 9.906 5.461 7 12 4.094zm-7 5.188L11 12.594v6.218l-6-2.667v-5.875zm14 0v5.875l-6 2.667v-6.218l6-3.281z'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23f5f5f5' d='M21.406 6.086l-9-4a1 1 0 0 0-.812 0l-9 4a1 1 0 0 0-.594.914v6a1 1 0 0 0 .594.914l9 4a1 1 0 0 0 .812 0l9-4a1 1 0 0 0 .594-.914v-6a1 1 0 0 0-.594-.914zM12 4.094L18.539 7 12 9.906 5.461 7 12 4.094zm-7 5.188L11 12.594v6.218l-6-2.667v-5.875zm14 0v5.875l-6 2.667v-6.218l6-3.281z'/%3E%3C/svg%3E">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200;14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-root: #030303;
+            --bg-surface: #060606;
+            --bg-elevated: #0a0a0a;
+            --bg-card: #0d0d0d;
+            --bg-card-hover: #111111;
+            --bg-card-active: #161616;
+            --border-ghost: #141414;
+            --border-subtle: #1c1c1c;
+            --border-default: #262626;
+            --border-hover: #333333;
+            --border-active: #404040;
+            --text-primary: #f5f5f5;
+            --text-secondary: #999999;
+            --text-muted: #666666;
+            --text-disabled: #444444;
+            --accent: #ffffff;
+            --accent-dim: #e0e0e0;
+            --radius-xs: 4px;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --radius-2xl: 36px;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.5);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.6);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.7);
+            --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-root);
+            color: var(--text-primary);
+            line-height: 1.65;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .grain-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 99999; opacity: 0.012;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+        .grid-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0; opacity: 0.03;
+            background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 3px; }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(3, 3, 3, 0.8); backdrop-filter: blur(50px) saturate(180%);
+            -webkit-backdrop-filter: blur(50px) saturate(180%); border-bottom: 1px solid var(--border-ghost);
+            padding: 16px 0; transition: var(--transition-smooth); z-index: 1000;
+        }
+        .navbar.scrolled { padding: 10px 0; background: rgba(3, 3, 3, 0.95); border-bottom-color: var(--border-subtle); box-shadow: var(--shadow-md); }
+        .navbar-brand { font-weight: 700; font-size: 1.15rem; letter-spacing: -0.3px; display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .navbar-brand .brand-icon { width: 32px; height: 32px; border-radius: var(--radius-xs); background: var(--bg-elevated); border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-size: 1.1rem; transition: var(--transition-smooth); }
+        .navbar-brand:hover .brand-icon { color: var(--text-primary); border-color: var(--border-default); }
+        .navbar-brand .brand-text { color: var(--text-primary); }
+        .navbar-brand .brand-text span { color: var(--text-secondary); font-weight: 400; }
+        .nav-link { color: var(--text-secondary) !important; font-weight: 500; font-size: 0.85rem; padding: 8px 16px !important; border-radius: 50px; transition: var(--transition-fast); }
+        .nav-link:hover { color: var(--text-primary) !important; background: var(--bg-card); }
+        .nav-link.active { color: var(--text-primary) !important; background: var(--bg-card-active); }
+        .btn-nav { background: var(--text-primary); color: var(--bg-root) !important; border: none; padding: 10px 22px !important; border-radius: 50px; font-weight: 600; font-size: 0.85rem; transition: var(--transition-spring); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+        .btn-nav:hover { background: var(--accent-dim); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+        .navbar-toggler { border: 1px solid var(--border-subtle) !important; border-radius: var(--radius-sm); padding: 8px 10px; }
+        .navbar-toggler:focus { box-shadow: none; }
+        .navbar-toggler-icon { background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.7)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
+        @media (max-width: 991px) {
+            .navbar-collapse { background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 16px; margin-top: 12px; }
+            .nav-link { padding: 12px 16px !important; }
+        }
+
+        /* Hero */
+        .hero-section { position: relative; z-index: 1; padding: 200px 0 120px; min-height: 90vh; display: flex; align-items: center; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 2px; padding: 8px 16px; border: 1px solid var(--border-subtle); border-radius: 50px; margin-bottom: 28px; background: var(--bg-elevated); animation: fadeInUp 0.8s ease both; }
+        .hero-badge .pulse-dot { width: 6px; height: 6px; background: var(--text-primary); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+        .hero-title { font-size: clamp(2.8rem, 5.5vw, 5.5rem); font-weight: 800; line-height: 1.04; letter-spacing: -2.5px; margin-bottom: 24px; animation: fadeInUp 0.8s ease 0.15s both; }
+        .hero-title .accent { color: var(--text-secondary); }
+        .hero-description { font-size: 1.1rem; color: var(--text-secondary); max-width: 540px; margin-bottom: 44px; line-height: 1.7; animation: fadeInUp 0.8s ease 0.3s both; }
+        .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeInUp 0.8s ease 0.45s both; }
+        .btn-primary-hero { background: var(--text-primary); color: var(--bg-root); border: none; padding: 16px 32px; border-radius: 50px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: var(--transition-spring); display: inline-flex; align-items: center; gap: 8px; }
+        .btn-primary-hero:hover { background: var(--accent-dim); color: var(--bg-root); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+        .btn-outline-hero { background: transparent; color: var(--text-primary); border: 1px solid var(--border-default); padding: 16px 32px; border-radius: 50px; font-weight: 500; font-size: 0.95rem; text-decoration: none; transition: var(--transition-smooth); display: inline-flex; align-items: center; gap: 8px; }
+        .btn-outline-hero:hover { border-color: var(--border-active); background: var(--bg-card); color: var(--text-primary); transform: translateY(-3px); }
+        .hero-visual-wrapper { position: relative; display: flex; align-items: center; justify-content: center; animation: floatSlow 8s ease-in-out infinite; }
+        @keyframes floatSlow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        .hero-visual-wrapper .glow-orb { position: absolute; width: 280px; height: 280px; background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%); border-radius: 50%; filter: blur(40px); }
+        .hero-visual-wrapper img { position: relative; z-index: 1; max-width: 340px; filter: grayscale(100%) contrast(1.1); transition: var(--transition-smooth); }
+        .hero-visual-wrapper:hover img { filter: grayscale(0%) contrast(1); }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Section Headers */
+        .section-spacing { padding: 100px 0; }
+        .section-header { margin-bottom: 64px; }
+        .section-label { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 500; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 14px; }
+        .section-title { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 700; letter-spacing: -1.2px; line-height: 1.2; }
+        .section-title .muted { color: var(--text-secondary); font-weight: 400; }
+        .section-description { color: var(--text-secondary); font-size: 1rem; max-width: 480px; margin: 12px auto 0; }
+
+        /* Service Cards */
+        .service-card {
+            background: var(--bg-card); border: 1px solid var(--border-ghost); border-radius: var(--radius-xl);
+            padding: 36px 28px; transition: var(--transition-smooth); height: 100%; position: relative; overflow: hidden;
+        }
+        .service-card:hover { background: var(--bg-card-hover); border-color: var(--border-subtle); transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+        .service-card .card-icon { width: 48px; height: 48px; border-radius: var(--radius-md); background: var(--bg-elevated); border: 1px solid var(--border-ghost); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--text-secondary); margin-bottom: 20px; transition: var(--transition-smooth); }
+        .service-card:hover .card-icon { color: var(--text-primary); border-color: var(--border-default); background: var(--bg-card-active); transform: scale(1.05); }
+        .service-card h4 { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.3px; }
+        .service-card p { color: var(--text-secondary); font-size: 0.875rem; margin: 0; line-height: 1.6; }
+        .service-card .card-footer { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border-ghost); font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; transition: var(--transition-smooth); }
+        .service-card:hover .card-footer { color: var(--text-primary); border-top-color: var(--border-subtle); }
+
+        /* Product Cards (lado a lado) */
+        .dual-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl); padding: 36px 32px;
+            transition: var(--transition-smooth); height: 100%;
+            display: flex; flex-direction: column;
+        }
+        .dual-card:hover { border-color: var(--border-default); background: var(--bg-card-hover); box-shadow: var(--shadow-lg); }
+        .dual-card .card-tag {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+            font-weight: 500; color: var(--text-secondary);
+            border: 1px solid var(--border-subtle); padding: 5px 12px;
+            border-radius: 50px; margin-bottom: 20px; letter-spacing: 1px;
+            background: var(--bg-elevated); width: fit-content;
+        }
+        .dual-card .card-tag .tag-dot { width: 5px; height: 5px; background: var(--text-secondary); border-radius: 50%; }
+        .dual-card h3 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.8px; margin-bottom: 6px; }
+        .dual-card .card-subtitle { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 20px; }
+        .dual-card .feature-list { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 24px; flex-grow: 1; }
+        .dual-card .feature-list li { display: flex; align-items: center; gap: 8px; color: var(--text-secondary); font-size: 0.85rem; }
+        .dual-card .feature-list li .check-icon { color: var(--text-secondary); font-size: 0.9rem; flex-shrink: 0; }
+        .dual-card .tech-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+        .dual-card .tech-stack .tech-item {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--text-secondary);
+            padding: 6px 10px; border-radius: 50px; background: var(--bg-elevated);
+            border: 1px solid var(--border-ghost); display: flex; align-items: center; gap: 5px;
+        }
+        .dual-card .card-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 20px; border-top: 1px solid var(--border-ghost); }
+        .price-display { display: flex; align-items: baseline; gap: 6px; }
+        .price-display .price-value { font-size: 2rem; font-weight: 800; letter-spacing: -1.5px; }
+        .price-display .price-label { color: var(--text-secondary); font-size: 0.8rem; }
+
+        .btn-buy {
+            background: var(--text-primary); color: var(--bg-root);
+            border: none; padding: 12px 28px; border-radius: 50px;
+            font-weight: 600; font-size: 0.9rem; cursor: pointer;
+            transition: var(--transition-spring); display: inline-flex;
+            align-items: center; gap: 6px; white-space: nowrap;
+        }
+        .btn-buy:hover { background: var(--accent-dim); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .btn-buy.outline {
+            background: transparent; color: var(--text-primary);
+            border: 1px solid var(--border-default);
+        }
+        .btn-buy.outline:hover { background: var(--bg-card-active); border-color: var(--border-hover); }
+
+        /* Quote Card */
+        .quote-card .service-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; flex-grow: 1; }
+        .service-option {
+            display: flex; align-items: center; gap: 10px;
+            padding: 12px 14px; border-radius: var(--radius-sm);
+            background: var(--bg-elevated); border: 1px solid transparent;
+            cursor: pointer; transition: var(--transition-fast);
+            color: var(--text-secondary); font-size: 0.875rem;
+        }
+        .service-option:hover { border-color: var(--border-ghost); color: var(--text-primary); }
+        .service-option.selected { border-color: var(--border-default); color: var(--text-primary); background: var(--bg-card-active); }
+        .service-option input[type="checkbox"] { display: none; }
+        .service-option .checkbox-custom {
+            width: 18px; height: 18px; border-radius: 4px; border: 1.5px solid var(--border-default);
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; transition: var(--transition-fast); font-size: 0.7rem;
+        }
+        .service-option.selected .checkbox-custom { background: var(--text-primary); border-color: var(--text-primary); color: var(--bg-root); }
+
+        /* FAQ */
+        .faq-list { max-width: 760px; margin: 0 auto; }
+        .faq-item { background: var(--bg-card); border: 1px solid var(--border-ghost); border-radius: var(--radius-lg); margin-bottom: 10px; transition: var(--transition-smooth); overflow: hidden; }
+        .faq-item:hover { border-color: var(--border-subtle); }
+        .faq-item .accordion-button { background: transparent; color: var(--text-primary); font-weight: 500; font-size: 0.95rem; padding: 22px 28px; border-radius: var(--radius-lg) !important; box-shadow: none; gap: 12px; }
+        .faq-item .accordion-button .faq-num { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-secondary); min-width: 20px; }
+        .faq-item .accordion-button::after { filter: invert(0.4); transition: var(--transition-smooth); }
+        .faq-item .accordion-button:not(.collapsed) { color: var(--text-primary); background: var(--bg-card-hover); border-bottom: 1px solid var(--border-ghost); }
+        .faq-item .accordion-body { color: var(--text-secondary); padding: 22px 28px 28px 64px; font-size: 0.9rem; line-height: 1.7; }
+
+        /* CTA */
+        .cta-wrapper { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-2xl); padding: 72px 48px; text-align: center; transition: var(--transition-smooth); position: relative; overflow: hidden; }
+        .cta-wrapper:hover { border-color: var(--border-default); }
+        .cta-wrapper .cta-icon { width: 64px; height: 64px; border-radius: 50%; background: var(--bg-elevated); border: 1px solid var(--border-subtle); display: inline-flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--text-secondary); margin-bottom: 24px; transition: var(--transition-smooth); }
+        .cta-wrapper:hover .cta-icon { color: var(--text-primary); border-color: var(--border-default); }
+
+        /* Stats */
+        .stats-row { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }
+        .stat-item { text-align: center; min-width: 120px; }
+        .stat-item .stat-value { font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 600; color: var(--text-primary); letter-spacing: -1px; }
+        .stat-item .stat-label { color: var(--text-secondary); font-size: 0.8rem; margin-top: 4px; }
+
+        /* Testimonials */
+        .testimonial-card { background: var(--bg-card); border: 1px solid var(--border-ghost); border-radius: var(--radius-xl); padding: 32px; transition: var(--transition-smooth); height: 100%; }
+        .testimonial-card:hover { border-color: var(--border-subtle); background: var(--bg-card-hover); }
+        .testimonial-card .quote { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px; }
+        .testimonial-card .author { display: flex; align-items: center; gap: 12px; }
+        .testimonial-card .author-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--bg-elevated); border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); font-size: 1rem; }
+        .testimonial-card .author-name { font-weight: 600; font-size: 0.9rem; }
+        .testimonial-card .author-role { color: var(--text-secondary); font-size: 0.8rem; }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-surface);
+            border-top: 1px solid var(--border-subtle);
+            font-size: 0.85rem;
+            position: relative;
+            z-index: 1;
+        }
+        .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+        .footer-brand strong { color: var(--text-primary); }
+        .footer-brand .footer-logo {
+            width: 36px; height: 36px; border-radius: var(--radius-xs);
+            background: var(--bg-elevated); border: 1px solid var(--border-subtle);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-secondary); font-size: 1.2rem;
+        }
+        .footer-text {
+            color: var(--text-secondary) !important;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+        }
+        .footer a {
+            color: var(--text-secondary) !important;
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+        .footer a:hover { color: var(--text-primary) !important; }
+        .footer .footer-heading {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-secondary) !important;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+        }
+        .footer .footer-contact-item {
+            color: var(--text-secondary) !important;
+        }
+        .footer .footer-copyright {
+            color: var(--text-secondary) !important;
+        }
+        .social-links { display: flex; gap: 8px; }
+        .social-link {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            display: inline-flex; align-items: center; justify-content: center;
+            color: var(--text-secondary) !important; transition: var(--transition-smooth);
+            font-size: 1.1rem;
+        }
+        .social-link:hover {
+            background: var(--bg-card-hover); border-color: var(--border-default);
+            color: var(--text-primary) !important; transform: translateY(-3px);
+        }
+
+        /* Reveal */
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        @media (max-width: 991px) {
+            .hero-section { padding: 160px 0 80px; }
+            .cta-wrapper { padding: 40px 24px; }
+        }
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.2rem; letter-spacing: -1px; }
+            .hero-description { font-size: 1rem; }
+            .hero-actions { flex-direction: column; }
+            .hero-actions .btn-primary-hero, .hero-actions .btn-outline-hero { width: 100%; justify-content: center; }
+            .stats-row { gap: 16px; }
+            .stat-item .stat-value { font-size: 1.5rem; }
+            .section-spacing { padding: 60px 0; }
+            .dual-card { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="grain-overlay"></div>
+<div class="grid-bg"></div>
+
+<nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+    <div class="container">
+        <a class="navbar-brand" href="#"><div class="brand-icon"><i class='bx bx-cube'></i></div><div class="brand-text">Nexus<span>Platforms</span></div></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="nav">
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+                <li class="nav-item"><a class="nav-link active" href="#home">Início</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services">Serviços</a></li>
+                <li class="nav-item"><a class="nav-link" href="#product">VendsHub</a></li>
+                <li class="nav-item"><a class="nav-link" href="#testimonials">Clientes</a></li>
+                <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                <li class="nav-item ms-lg-2 mt-2 mt-lg-0"><a href="#product" class="btn-nav"><i class='bx bx-cart-alt'></i> Adquirir Bot</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="hero-section" id="home">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7">
+                <div class="hero-badge"><span class="pulse-dot"></span> Nexus Platforms — Est. 2026</div>
+                <h1 class="hero-title">Tecnologia que <span class="accent">transforma</span> negócios.</h1>
+                <p class="hero-description">Desenvolvemos bots inteligentes para Telegram e Discord, APIs escaláveis, plataformas SaaS e automações personalizadas. Código que gera resultados.</p>
+                <div class="hero-actions">
+                    <a href="#product" class="btn-primary-hero"><i class='bx bx-bot'></i> Conhecer VendsHub</a>
+                    <a href="https://discord.gg/CM3fUfF6vw" target="_blank" class="btn-outline-hero"><i class='bx bxl-discord-alt'></i> Comunidade Discord</a>
+                </div>
+                <div class="stats-row mt-5">
+                    <div class="stat-item"><div class="stat-value">4+</div><div class="stat-label">Serviços</div></div>
+                    <div class="stat-item"><div class="stat-value">50+</div><div class="stat-label">Clientes</div></div>
+                    <div class="stat-item"><div class="stat-value">24/7</div><div class="stat-label">Suporte</div></div>
+                    <div class="stat-item"><div class="stat-value">100%</div><div class="stat-label">Código Aberto</div></div>
+                </div>
+            </div>
+            <div class="col-lg-5 text-center">
+                <div class="hero-visual-wrapper"><div class="glow-orb"></div><img src="https://imgur.com/b8PTjZA.png" alt="Nexus Platforms Technology" class="img-fluid"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-spacing" id="services">
+    <div class="container">
+        <div class="section-header text-center reveal"><div class="section-label">O que fazemos</div><h2 class="section-title">Soluções em <span class="muted">código</span></h2><p class="section-description">Da concepção à execução, entregamos produtos digitais de alto nível.</p></div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3 reveal reveal-delay-1"><div class="service-card"><div class="card-icon"><i class='bx bx-bot'></i></div><h4>Bots Telegram</h4><p>Automação de vendas, suporte e gestão com pagamentos via Stripe e Mercado Pago.</p><div class="card-footer"><i class='bx bx-check-shield'></i> Go + MongoDB</div></div></div>
+            <div class="col-md-6 col-lg-3 reveal reveal-delay-2"><div class="service-card"><div class="card-icon"><i class='bx bxl-discord-alt'></i></div><h4>Bots Discord</h4><p>Moderação avançada, economia virtual, música e engajamento para comunidades.</p><div class="card-footer"><i class='bx bx-check-shield'></i> Python + Discord.py</div></div></div>
+            <div class="col-md-6 col-lg-3 reveal reveal-delay-3"><div class="service-card"><div class="card-icon"><i class='bx bx-code-alt'></i></div><h4>Sites & APIs</h4><p>Landing pages, dashboards interativos e APIs RESTful com documentação completa.</p><div class="card-footer"><i class='bx bx-check-shield'></i> React + Node.js</div></div></div>
+            <div class="col-md-6 col-lg-3 reveal reveal-delay-4"><div class="service-card"><div class="card-icon"><i class='bx bx-git-repo-forked'></i></div><h4>Automações & SaaS</h4><p>Scripts personalizados, integrações e sistemas SaaS white-label sob medida.</p><div class="card-footer"><i class='bx bx-check-shield'></i> Cloud + Microserviços</div></div></div>
+        </div>
+    </div>
+</section>
+
+<section class="section-spacing" id="product">
+    <div class="container">
+        <div class="section-header text-center reveal">
+            <div class="section-label">Produtos & Orçamentos</div>
+            <h2 class="section-title">Soluções <span class="muted">Nexus</span></h2>
+            <p class="section-description">Adquira o VendsHub Bot ou solicite um orçamento personalizado</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-6 reveal reveal-delay-1">
+                <div class="dual-card">
+                    <span class="card-tag"><span class="tag-dot"></span> MAIS VENDIDO</span>
+                    <h3>VendsHub Bot</h3>
+                    <p class="card-subtitle">Marketplace completo para Telegram</p>
+                    <ul class="feature-list">
+                        <li><i class='bx bx-check-circle check-icon'></i> Stripe + Mercado Pago (PIX)</li>
+                        <li><i class='bx bx-check-circle check-icon'></i> Entrega automática de produtos</li>
+                        <li><i class='bx bx-check-circle check-icon'></i> Multi-loja (White-label)</li>
+                        <li><i class='bx bx-check-circle check-icon'></i> Grupos de vendas vinculados</li>
+                        <li><i class='bx bx-check-circle check-icon'></i> Painel admin no chat do Telegram</li>
+                        <li><i class='bx bx-check-circle check-icon'></i> Código fonte 100% aberto</li>
+                    </ul>
+                    <div class="tech-stack">
+                        <span class="tech-item"><i class='bx bxl-go-lang'></i> Go</span>
+                        <span class="tech-item"><i class='bx bxl-mongodb'></i> MongoDB</span>
+                        <span class="tech-item"><i class='bx bxl-stripe'></i> Stripe</span>
+                        <span class="tech-item"><i class='bx bx-credit-card'></i> Mercado Pago</span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="price-display"><span class="price-value">R$50</span><span class="price-label">pagamento único</span></div>
+                        <button class="btn-buy" onclick="handleBuyNow()"><i class='bx bxl-whatsapp'></i> Comprar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 reveal reveal-delay-2">
+                <div class="dual-card quote-card">
+                    <span class="card-tag">PERSONALIZADO</span>
+                    <h3>Solicitar Orçamento</h3>
+                    <p class="card-subtitle">Selecione os serviços desejados</p>
+                    <div class="service-options" id="serviceOptions">
+                        <label class="service-option" data-service="Bot Telegram"><input type="checkbox" name="service" value="Bot Telegram"><span class="checkbox-custom"><i class='bx bx-check'></i></span>Bot para Telegram</label>
+                        <label class="service-option" data-service="Bot Discord"><input type="checkbox" name="service" value="Bot Discord"><span class="checkbox-custom"><i class='bx bx-check'></i></span>Bot para Discord</label>
+                        <label class="service-option" data-service="Site / Landing Page"><input type="checkbox" name="service" value="Site / Landing Page"><span class="checkbox-custom"><i class='bx bx-check'></i></span>Site / Landing Page</label>
+                        <label class="service-option" data-service="API RESTful"><input type="checkbox" name="service" value="API RESTful"><span class="checkbox-custom"><i class='bx bx-check'></i></span>API RESTful</label>
+                        <label class="service-option" data-service="Plataforma SaaS"><input type="checkbox" name="service" value="Plataforma SaaS"><span class="checkbox-custom"><i class='bx bx-check'></i></span>Plataforma SaaS</label>
+                        <label class="service-option" data-service="Automação Personalizada"><input type="checkbox" name="service" value="Automação Personalizada"><span class="checkbox-custom"><i class='bx bx-check'></i></span>Automação Personalizada</label>
+                    </div>
+                    <div class="card-footer">
+                        <small style="color: var(--text-secondary);">Selecione ao menos 1 serviço</small>
+                        <button class="btn-buy outline" onclick="handleQuoteRequest()" id="btnQuote"><i class='bx bxl-whatsapp'></i> Solicitar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-spacing" id="testimonials" style="background:var(--bg-surface);">
+    <div class="container">
+        <div class="section-header text-center reveal"><div class="section-label">Depoimentos</div><h2 class="section-title">Quem já <span class="muted">confia</span></h2><p class="section-description">O que nossos clientes dizem sobre as soluções Nexus</p></div>
+        <div class="row g-4">
+            <div class="col-md-4 reveal reveal-delay-1"><div class="testimonial-card"><p class="quote">"O VendsHub Bot transformou minhas vendas no Telegram. Instalação rápida e suporte essencial."</p><div class="author"><div class="author-avatar"><i class='bx bx-user'></i></div><div><div class="author-name">Carlos Mendes</div><div class="author-role">Loja InfoProdutos</div></div></div></div></div>
+            <div class="col-md-4 reveal reveal-delay-2"><div class="testimonial-card"><p class="quote">"API personalizada entregue em tempo recorde, com documentação clara e código limpo."</p><div class="author"><div class="author-avatar"><i class='bx bx-user'></i></div><div><div class="author-name">Ana Oliveira</div><div class="author-role">Tech Lead - SaaS</div></div></div></div></div>
+            <div class="col-md-4 reveal reveal-delay-3"><div class="testimonial-card"><p class="quote">"Bot Discord com 10k+ usuários. Moderação e economia funcionando perfeitamente."</p><div class="author"><div class="author-avatar"><i class='bx bx-user'></i></div><div><div class="author-name">Rafael Torres</div><div class="author-role">Comunidade GamerHub</div></div></div></div></div>
+        </div>
+    </div>
+</section>
+
+<section class="section-spacing" id="faq">
+    <div class="container">
+        <div class="section-header text-center reveal"><div class="section-label">Dúvidas</div><h2 class="section-title">Perguntas <span class="muted">frequentes</span></h2></div>
+        <div class="faq-list reveal">
+            <div class="accordion" id="faqAccordion">
+                <div class="faq-item"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq1"><span class="faq-num">01</span> O que está incluído nos R$50?</button><div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Código fonte completo, instruções de instalação, configuração dos gateways Stripe e Mercado Pago, e suporte via WhatsApp e Discord.</div></div></div>
+                <div class="faq-item"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq2"><span class="faq-num">02</span> Preciso saber programar?</button><div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Conhecimento básico de terminal ajuda, mas damos suporte completo. Após instalado, tudo é gerenciado pelo Telegram.</div></div></div>
+                <div class="faq-item"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq3"><span class="faq-num">03</span> Posso personalizar o bot?</button><div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Sim, o código é 100% aberto. Também oferecemos personalizações sob demanda.</div></div></div>
+                <div class="faq-item"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq4"><span class="faq-num">04</span> Fazem outros tipos de bots?</button><div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Sim! Bots Discord, sites, APIs, plataformas SaaS e automações. Solicite um orçamento na seção acima.</div></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-spacing">
+    <div class="container">
+        <div class="cta-wrapper reveal">
+            <div class="cta-icon"><i class='bx bx-rocket'></i></div>
+            <h2 class="section-title mb-3">Pronto para <span class="muted">automatizar?</span></h2>
+            <p style="color: var(--text-secondary); max-width:440px;margin:0 auto 32px;">Adquira o VendsHub Bot ou solicite um orçamento personalizado.</p>
+            <button class="btn-buy mx-auto" onclick="handleBuyNow()"><i class='bx bxl-whatsapp'></i> Comprar por R$50</button>
+        </div>
+    </div>
+</section>
+
+<footer class="footer py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-5">
+                <div class="footer-brand">
+                    <div class="footer-logo"><i class='bx bx-cube'></i></div>
+                    <strong>Nexus Platforms</strong>
+                </div>
+                <p class="footer-text">Tecnologia que transforma negócios. Bots, APIs, sites e automações inteligentes.</p>
+                <div class="social-links">
+                    <a href="https://discord.gg/CM3fUfF6vw" target="_blank" class="social-link" aria-label="Discord"><i class='bx bxl-discord-alt'></i></a>
+                    <a href="https://t.me/+kpMeorrwyhw1NTY5" target="_blank" class="social-link" aria-label="Telegram"><i class='bx bxl-telegram'></i></a>
+                    <a href="https://wa.me/55991755100" target="_blank" class="social-link" aria-label="WhatsApp"><i class='bx bxl-whatsapp'></i></a>
+                    <a href="https://github.com" target="_blank" class="social-link" aria-label="GitHub"><i class='bx bxl-github'></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="footer-heading">Navegação</div>
+                <ul class="list-unstyled small">
+                    <li class="mb-2"><a href="#home">Início</a></li>
+                    <li class="mb-2"><a href="#services">Serviços</a></li>
+                    <li class="mb-2"><a href="#product">Produtos</a></li>
+                    <li class="mb-2"><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <div class="footer-heading">Contato</div>
+                <ul class="list-unstyled small">
+                    <li class="mb-2 footer-contact-item"><i class='bx bxl-whatsapp me-2'></i> +55 (55) 99175-5100</li>
+                    <li class="mb-2 footer-contact-item"><i class='bx bxl-discord-alt me-2'></i> discord.gg/CM3fUfF6vw</li>
+                    <li class="mb-2 footer-contact-item"><i class='bx bxl-telegram me-2'></i> t.me/+kpMeorrwyhw1NTY5</li>
+                </ul>
+            </div>
+        </div>
+        <hr style="border-color: var(--border-subtle); margin: 32px 0;">
+        <div class="d-flex flex-wrap justify-content-between align-items-center">
+            <small class="footer-copyright">&copy; 2026 Nexus Platforms. Todos os direitos reservados.</small>
+            <small class="footer-copyright">nexus-plataforms.com</small>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(function() {
+    'use strict';
+    const navbar = document.getElementById('navbar');
+    const allNavLinks = document.querySelectorAll('.nav-link');
+    const allSections = document.querySelectorAll('section[id]');
+    const revealElements = document.querySelectorAll('.reveal');
+    const accordionButtons = document.querySelectorAll('.faq-item .accordion-button');
+
+    function handleNavbarScroll() { navbar.classList.toggle('scrolled', window.scrollY > 60); }
+    function updateActiveNavLink() {
+        let c = ''; const sp = window.scrollY + 120;
+        allSections.forEach(s => { if (sp >= s.offsetTop && sp < s.offsetTop + s.offsetHeight) c = s.id; });
+        allNavLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + c));
+    }
+    function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+            e.preventDefault(); const t = document.querySelector(a.getAttribute('href'));
+            if (t) window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' });
+        }));
+    }
+    function initReveal() {
+        if (!('IntersectionObserver' in window)) { revealElements.forEach(el => el.classList.add('visible')); return; }
+        const obs = new IntersectionObserver(entries => entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('visible'); obs.unobserve(en.target); } }), { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        revealElements.forEach(el => obs.observe(el));
+    }
+    function initFaq() {
+        accordionButtons.forEach(btn => btn.addEventListener('click', () => {
+            accordionButtons.forEach(other => { if (other !== btn) { const t = document.querySelector(other.getAttribute('data-bs-target')); if (t && t.classList.contains('show')) other.click(); } });
+        }));
+    }
+    function createScrollTop() {
+        const btn = document.createElement('button'); btn.innerHTML = '<i class="bx bx-chevron-up"></i>'; btn.className = 'scroll-top-btn'; btn.setAttribute('aria-label','Voltar ao topo');
+        const st = document.createElement('style'); st.textContent = '.scroll-top-btn{position:fixed;bottom:28px;right:28px;z-index:999;width:48px;height:48px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border-subtle);color:var(--text-secondary);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.3rem;opacity:0;visibility:hidden;transition:var(--transition-smooth)}.scroll-top-btn.visible{opacity:1;visibility:visible}.scroll-top-btn:hover{background:var(--bg-card-hover);border-color:var(--border-default);color:var(--text-primary);transform:translateY(-4px)}';
+        document.head.appendChild(st); document.body.appendChild(btn);
+        window.addEventListener('scroll', () => btn.classList.toggle('visible', window.scrollY > 600));
+        btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    }
+
+    function initServiceOptions() {
+        const options = document.querySelectorAll('.service-option');
+        options.forEach(opt => {
+            opt.addEventListener('click', function(e) {
+                e.preventDefault();
+                const checkbox = this.querySelector('input[type="checkbox"]');
+                checkbox.checked = !checkbox.checked;
+                this.classList.toggle('selected', checkbox.checked);
+            });
+        });
+    }
+
+    function handleBuyNow() {
+        window.open('https://wa.me/55991755100?text=' + encodeURIComponent('Olá! Gostaria de comprar o *VendsHub Bot* por R$ 50,00.\n\nPoderia me enviar as informações para pagamento?\n\nAguardo seu retorno. Obrigado!'), '_blank', 'noopener,noreferrer');
+    }
+
+    function handleQuoteRequest() {
+        const selected = document.querySelectorAll('.service-option.selected input');
+        if (selected.length === 0) {
+            alert('Selecione pelo menos um serviço para solicitar orçamento.');
+            return;
+        }
+        const services = Array.from(selected).map(cb => cb.value).join(', ');
+        const message = encodeURIComponent(
+            'Olá! Gostaria de solicitar um orçamento para o(s) seguinte(s) serviço(s):\n\n' +
+            '📋 *' + services + '*\n\n' +
+            'Poderia me enviar mais informações sobre valores e prazos?\n\n' +
+            'Aguardo seu retorno. Obrigado!'
+        );
+        window.open('https://wa.me/55991755100?text=' + message, '_blank', 'noopener,noreferrer');
+    }
+
+    function init() {
+        handleNavbarScroll(); initSmoothScroll(); initReveal(); initFaq(); createScrollTop(); initServiceOptions();
+        window.handleBuyNow = handleBuyNow; window.handleQuoteRequest = handleQuoteRequest;
+    }
+    window.addEventListener('scroll', () => { handleNavbarScroll(); updateActiveNavLink(); }, { passive: true });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+
+    const ld = document.createElement('script'); ld.type = 'application/ld+json';
+    ld.text = JSON.stringify({"@context":"https://schema.org","@type":"Organization","name":"Nexus Platforms","url":"https://nexus-plataforms.com","logo":"https://imgur.com/JiwJsk4.PNG","description":"Bots, APIs e Automações","contactPoint":{"@type":"ContactPoint","telephone":"+55 55 99175-5100","contactType":"sales"},"sameAs":["https://discord.gg/CM3fUfF6vw","https://t.me/+kpMeorrwyhw1NTY5"],"makesOffer":{"@type":"Offer","itemOffered":{"@type":"SoftwareApplication","name":"VendsHub Bot"},"price":"50.00","priceCurrency":"BRL"}}, null, 2);
+    document.head.appendChild(ld);
+})();
+</script>
+</body>
+</html>
