@@ -6,7 +6,7 @@
     
     <title>Nexus Plataforms — Bots, APIs & Automações Inteligentes</title>
     <meta name="description" content="Desenvolvemos bots para Telegram e Discord, APIs escaláveis, plataformas SaaS e automações personalizadas. Tecnologia que transforma negócios.">
-    <meta name="keywords" content="bots telegram, bots discord, desenvolvimento api, plataforma saas, automações, vendshub bot, nexus agent, nexus rp bot, nexus freefire bot, nexus plataforms">
+    <meta name="keywords" content="bots telegram, bots discord, desenvolvimento api, plataforma saas, automações, vendshub bot, nexus agent, nexus rp bot, nexus discord bot, nexus plataforms">
     <meta name="author" content="Nexus Plataforms">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://nexus-plataforms.com/">
@@ -461,33 +461,33 @@
                     </div>
                 </div>
             </div>
-            <!-- Nexus FreeFire Bot - NOVO -->
+            <!-- Nexus Discord Bot - NOVO -->
             <div class="col-lg-6 reveal reveal-delay-3">
                 <div class="dual-card">
                     <span class="card-tag"><span class="tag-dot"></span> NOVO</span>
-                    <h3>Nexus FreeFire Bot</h3>
-                    <p class="card-subtitle">Sistema completo de apostas FreeFire para Discord</p>
+                    <h3>Nexus Discord Bot</h3>
+                    <p class="card-subtitle">Sistema multi-servidor completo para Discord com economia, filas e pagamentos</p>
                     <ul class="feature-list">
-                        <li><i class='bx bx-check-circle check-icon'></i> Sistema de filas 1v1 (Gel Normal e Infinito)</li>
-                        <li><i class='bx bx-check-circle check-icon'></i> Filas Normal e Misto (2x2, 3x3, 4x4)</li>
-                        <li><i class='bx bx-check-circle check-icon'></i> Matchmaking automático com criação de salas</li>
-                        <li><i class='bx bx-check-circle check-icon'></i> Sistema de mediadores com fila dedicada</li>
-                        <li><i class='bx bx-check-circle check-icon'></i> Confirmação de partidas por botões</li>
-                        <li><i class='bx bx-check-circle check-icon'></i> Sistema de vitórias/derrotas e ranking</li>
-                        <li><i class='bx bx-check-circle check-icon'></i> Pagamento via PIX com QR Code integrado</li>
-                        <li><i class='bx bx-check-circle check-icon'></i> Painel de configuração completo</li>
-                        <li><i class='bx bx-check-circle check-icon'></i> Sistema de logs e análise de usuários</li>
-                        <li><i class='bx bx-check-circle check-icon'></i> Verificação OAuth2 com API própria</li>
+                        <li><i class='bx bx-check-circle check-icon'></i> Sistema de filas (Mobile, Emulador, Misto, Tático)</li>
+                        <li><i class='bx bx-check-circle check-icon'></i> Modos 1v1, 2v2, 3v3 e 4v4</li>
+                        <li><i class='bx bx-check-circle check-icon'></i> Sistema de economia com coins, loja e inventário</li>
+                        <li><i class='bx bx-check-circle check-icon'></i> Pagamentos via Mercado Pago, Stripe e Pix</li>
+                        <li><i class='bx bx-check-circle check-icon'></i> Sistema de tickets com categorias e painel</li>
+                        <li><i class='bx bx-check-circle check-icon'></i> Ranking de jogadores e mediadores</li>
+                        <li><i class='bx bx-check-circle check-icon'></i> Call privada automática na criação de partida</li>
+                        <li><i class='bx bx-check-circle check-icon'></i> Blacklist, cooldown e anti-abuso</li>
+                        <li><i class='bx bx-check-circle check-icon'></i> Roleta, caixas misteriosas e destaque diário</li>
+                        <li><i class='bx bx-check-circle check-icon'></i> Painel de configuração completo via /central</li>
                     </ul>
                     <div class="tech-stack">
-                        <span class="tech-item"><i class='bx bxl-nodejs'></i> Node.js</span>
-                        <span class="tech-item"><i class='bx bxl-discord-alt'></i> Discord.js v14</span>
-                        <span class="tech-item"><i class='bx bx-data'></i> Redis Upstash</span>
-                        <span class="tech-item"><i class='bx bx-cloud'></i> Vercel</span>
+                        <span class="tech-item"><i class='bx bxl-go-lang'></i> Go 1.26</span>
+                        <span class="tech-item"><i class='bx bxl-mongodb'></i> MongoDB</span>
+                        <span class="tech-item"><i class='bx bxl-discord-alt'></i> Discordgo</span>
+                        <span class="tech-item"><i class='bx bx-credit-card'></i> Stripe + MP</span>
                     </div>
                     <div class="card-footer">
-                        <div class="price-display"><span class="price-value">R$100</span><span class="price-label">pagamento único</span></div>
-                        <button class="btn-buy" onclick="handleBuyNexusFreeFire()"><i class='bx bxl-whatsapp'></i> Comprar</button>
+                        <div class="price-display"><span class="price-value">R$50</span><span class="price-label">pagamento único</span></div>
+                        <button class="btn-buy" onclick="handleBuyNexusDiscord()"><i class='bx bxl-whatsapp'></i> Comprar</button>
                     </div>
                 </div>
             </div>
@@ -576,7 +576,7 @@
                 <div class="faq-item"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq1"><span class="faq-num">01</span> O que está incluído na compra?</button><div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Código fonte completo, instruções de instalação, configuração dos gateways e suporte via WhatsApp e Discord. Todos os bots incluem código 100% aberto.</div></div></div>
                 <div class="faq-item"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq2"><span class="faq-num">02</span> Preciso saber programar?</button><div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Conhecimento básico de terminal ajuda, mas damos suporte completo. Após instalado, tudo é gerenciado pelo próprio chat (Telegram ou Discord).</div></div></div>
                 <div class="faq-item"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq3"><span class="faq-num">03</span> Posso personalizar os bots?</button><div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Sim, todos os códigos são 100% abertos. Também oferecemos personalizações sob demanda.</div></div></div>
-                <div class="faq-item"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq4"><span class="faq-num">04</span> Qual a diferença entre os bots?</button><div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">O <strong>VendsHub</strong> é um marketplace focado em vendas no Telegram. O <strong>Nexus Agent</strong> é uma plataforma empresarial completa para Discord com 15 módulos. O <strong>Nexus FreeFire Bot</strong> é um sistema de apostas FreeFire com filas, matchmaking e verificação OAuth2. O <strong>Nexus RP</strong> é um servidor GTA RP completo dentro do Discord com economia, crimes, facções, polícia, veículos e muito mais.</div></div></div>
+                <div class="faq-item"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq4"><span class="faq-num">04</span> Qual a diferença entre os bots?</button><div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">O <strong>VendsHub</strong> é um marketplace focado em vendas no Telegram. O <strong>Nexus Agent</strong> é uma plataforma empresarial completa para Discord com 15 módulos. O <strong>Nexus Discord Bot</strong> é um sistema multi-servidor com economia, filas, tickets e pagamentos. O <strong>Nexus RP</strong> é um servidor GTA RP completo dentro do Discord com economia, crimes, facções, polícia, veículos e muito mais.</div></div></div>
             </div>
         </div>
     </div>
@@ -591,7 +591,7 @@
             <div class="d-flex gap-3 justify-content-center flex-wrap">
                 <button class="btn-buy" onclick="handleBuyNexusAgent()"><i class='bx bxl-discord-alt'></i> Nexus Agent R$150</button>
                 <button class="btn-buy" onclick="handleBuyVendsHub()"><i class='bx bxl-telegram'></i> VendsHub R$50</button>
-                <button class="btn-buy" onclick="handleBuyNexusFreeFire()"><i class='bx bx-target-lock'></i> Nexus FreeFire R$100</button>
+                <button class="btn-buy" onclick="handleBuyNexusDiscord()"><i class='bx bxl-discord-alt'></i> Nexus Discord R$50</button>
                 <button class="btn-buy" onclick="handleBuyNexusRP()"><i class='bx bx-game'></i> Nexus RP R$350</button>
             </div>
         </div>
@@ -619,7 +619,7 @@
                 <ul class="list-unstyled small">
                     <li class="mb-2"><a href="#products">Nexus Agent (Discord) — R$150</a></li>
                     <li class="mb-2"><a href="#products">VendsHub Bot (Telegram) — R$50</a></li>
-                    <li class="mb-2"><a href="#products">Nexus FreeFire Bot (Discord) — R$100</a></li>
+                    <li class="mb-2"><a href="#products">Nexus Discord Bot (Discord) — R$50</a></li>
                     <li class="mb-2"><a href="#products">Nexus RP Bot (Discord) — R$350</a></li>
                 </ul>
             </div>
@@ -700,8 +700,8 @@
         window.open('https://wa.me/55991755100?text=' + encodeURIComponent('Olá! Gostaria de comprar o *Nexus Agent* por R$ 150,00.\n\nTenho interesse no bot Discord completo com 15 módulos.\n\nPoderia me enviar as informações para pagamento?\n\nAguardo seu retorno. Obrigado!'), '_blank', 'noopener,noreferrer');
     }
 
-    function handleBuyNexusFreeFire() {
-        window.open('https://wa.me/55991755100?text=' + encodeURIComponent('Olá! Gostaria de comprar o *Nexus FreeFire Bot* por R$ 100,00.\n\nTenho interesse no sistema de apostas FreeFire para Discord.\n\nPoderia me enviar as informações para pagamento?\n\nAguardo seu retorno. Obrigado!'), '_blank', 'noopener,noreferrer');
+    function handleBuyNexusDiscord() {
+        window.open('https://wa.me/55991755100?text=' + encodeURIComponent('Olá! Gostaria de comprar o *Nexus Discord Bot* por R$ 50,00.\n\nTenho interesse no sistema multi-servidor para Discord com economia, filas e pagamentos.\n\nPoderia me enviar as informações para pagamento?\n\nAguardo seu retorno. Obrigado!'), '_blank', 'noopener,noreferrer');
     }
 
     function handleBuyNexusRP() {
@@ -728,7 +728,7 @@
         handleNavbarScroll(); initSmoothScroll(); initReveal(); initFaq(); createScrollTop(); initServiceOptions();
         window.handleBuyVendsHub = handleBuyVendsHub;
         window.handleBuyNexusAgent = handleBuyNexusAgent;
-        window.handleBuyNexusFreeFire = handleBuyNexusFreeFire;
+        window.handleBuyNexusDiscord = handleBuyNexusDiscord;
         window.handleBuyNexusRP = handleBuyNexusRP;
         window.handleQuoteRequest = handleQuoteRequest;
     }
@@ -764,11 +764,11 @@
             },
             {
                 "@type":"Offer",
-                "name":"Nexus FreeFire Bot",
-                "description":"Sistema completo de apostas FreeFire para Discord com filas, matchmaking e verificação OAuth2",
-                "price":"100.00",
+                "name":"Nexus Discord Bot",
+                "description":"Sistema multi-servidor completo para Discord com economia, filas, tickets e pagamentos",
+                "price":"50.00",
                 "priceCurrency":"BRL",
-                "itemOffered":{"@type":"SoftwareApplication","name":"Nexus FreeFire Bot"}
+                "itemOffered":{"@type":"SoftwareApplication","name":"Nexus Discord Bot"}
             },
             {
                 "@type":"Offer",
